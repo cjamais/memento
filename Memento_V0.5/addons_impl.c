@@ -13,6 +13,8 @@ void iniciar_addons(ALLEGRO_DISPLAY* tela, ALLEGRO_EVENT_QUEUE* event_queue, ALL
     al_set_window_position(tela, 600, 100);
     al_set_window_title(tela, "Memento");
 
+    al_register_event_source(event_queue, al_get_keyboard_event_source());
+    al_register_event_source(event_queue, al_get_mouse_event_source());
     al_register_event_source(event_queue, al_get_display_event_source(tela));
     al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
@@ -23,12 +25,12 @@ void desenhar_prisma(ALLEGRO_BITMAP* prisma) {
     // Limpa a tela com a cor branca
     al_clear_to_color(al_map_rgb(255, 255, 255));
 
-    // Desenha as regiões do prisma
+    // Desenha as regiï¿½es do prisma
     al_draw_bitmap_region(prisma, 0, 0, 200, 200, 300, 175, 0);  // Vermelho
     al_draw_bitmap_region(prisma, 200, 0, 200, 200, 300, 425, 0); // Amarelo
     al_draw_bitmap_region(prisma, 400, 0, 200, 200, 175, 300, 0); // Verde
     al_draw_bitmap_region(prisma, 600, 0, 200, 200, 425, 300, 0); // Azul
 
-    // Atualiza a exibição
+    // Atualiza a exibiï¿½ï¿½o
     al_flip_display();
 }

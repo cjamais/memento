@@ -33,7 +33,7 @@ int main() {
     iniciar_addons(tela, event_queue, font, timer);
 
     ALLEGRO_BITMAP* prismaPadrao = al_load_bitmap("prisma.png");
-      ALLEGRO_BITMAP* prismaClaro = al_load_bitmap("prisma_claro.png");
+    ALLEGRO_BITMAP* prismaClaro = al_load_bitmap("prisma_claro.png");
 
     if (!prismaPadrao) {
         printf("Erro ao carregar a imagem prisma.png.\n");
@@ -44,30 +44,28 @@ int main() {
         return -1;
     }
 
-    //PREPRARAÇÃO DA FILA
-    T_Queue fila_original, sequencia, fila_copia;
-    T_Info saiu, esperado, entrada_usuario;
-    int errou = 0;
-
-    fila_original = init(20);
-    sequencia = init(20);
-    fila_copia = init(20);
-
-    srand(time(NULL));
-
-    for (int i = 0;i < 20;i++) {
-        int random = (rand() % 4) + 1;
-        printf("%d %s\n", random, enqueue(fila_original, random) ? "Entrou" : "Não entrou");
-    }
-
-    int rodada = 1;
-
-
+    //LOOP PRINCIPAL DO JOGO
     while (true) {
         ALLEGRO_EVENT event;
         al_wait_for_event(event_queue, &event);
         if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
             break;
+        }
+
+        //PREPRARAÇÃO DA FILA
+        T_Queue fila_original, sequencia, fila_copia;
+        T_Info saiu, esperado, entrada_usuario;
+        int errou = 0;
+
+        fila_original = init(20);
+        sequencia = init(20);
+        fila_copia = init(20);
+
+        srand(time(NULL));
+
+        for (int i = 0;i < 20;i++) {
+            int random = (rand() % 4) + 1;
+            printf("%d %s\n", random, enqueue(fila_original, random) ? "Entrou" : "Não entrou");
         }
 
 		desenhar_prisma(prismaPadrao);
@@ -90,7 +88,7 @@ int main() {
                     al_rest(0.7);
                     break;
                 case 2:
-                    //AMAERELO
+                    //AMARELO
                     al_draw_bitmap_region(prismaClaro, 200, 0, 200, 200, 300, 425, 0);
                     al_flip_display();
                     al_rest(0.7);
@@ -119,26 +117,41 @@ int main() {
                 enqueue(fila_copia, saiu);
             }
 
+            al_flush_event_queue(event_queue);
+
 			//WHILE DA ENTRADA DO USUÁRIO
             while (!is_empty(sequencia)) {
-                dequeue(sequencia, &saiu);
+                dequeue(sequencia, &esperado);
 
-                /*printf("\nVez do usuário: ");
-                
-                identificar_cor_teclado(int tecla);
-                identificar_cor_mouse(int x, int y);
-                e depois piscar a cor correspondente
-                al_rest(5);*/
+                bool entrada_valida = false;
+                int entrada = 0;
 
-                /*scanf("%d", &entrada_usuario);
-                if (entrada_usuario == saiu) {
+                printf("\nVez do usuário: ");
+
+                while (!entrada_valida) {
+                    al_wait_for_event(event_queue, &event);
+
+                    if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+                        entrada = identificar_cor_teclado(event.keyboard.keycode);
+                        entrada_valida = (entrada > 0 && entrada <= 4);
+                    }
+                    else if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
+                        entrada = identificar_cor_mouse(event.mouse.x, event.mouse.y);
+                        entrada_valida = (entrada > 0 && entrada <= 4);
+						
+                    }
+                }
+
+                piscar_entrada(entrada, prismaClaro, prismaPadrao);
+
+                if (entrada == esperado) {
                     printf("OK\n");
                 }
                 else {
-                    printf("ERROU!\n");
+                    printf("ERROU! A sequência era %d.\n", esperado);
                     errou = 1;
                     break;
-                }*/
+                }
             }
 
             while (!is_empty(fila_copia)) {

@@ -7,3 +7,4 @@
 void inicializar_posicoes(int posicoes[][2]);
 int identificar_cor_teclado(int tecla);
 int identificar_cor_mouse(int x, int y);
+int piscar_entrada(int entrada, ALLEGRO_BITMAP* prismaClaro, ALLEGRO_BITMAP* prismaPadrao);
