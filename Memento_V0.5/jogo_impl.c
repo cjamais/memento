@@ -29,7 +29,7 @@ int identificar_cor_mouse(int x, int y) {
     return 0;
 }
 
-int piscar_entrada(int entrada, ALLEGRO_BITMAP* prismaClaro, ALLEGRO_BITMAP* prismaPadrao) {
+void piscar_entrada(int entrada, ALLEGRO_BITMAP* prismaClaro, ALLEGRO_BITMAP* prismaPadrao) {
     switch (entrada) {
     case 1:
         //VERMELHO
