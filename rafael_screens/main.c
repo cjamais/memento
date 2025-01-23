@@ -36,38 +36,41 @@ int main() {
     }
 
     ALLEGRO_BITMAP *logo_image = al_load_bitmap("logo.png");
-    if (!logo_image) {
-        fprintf(stderr, "Erro ao carregar a imagem logo.png.\n");
-        return -1;
-    }
-
     ALLEGRO_BITMAP *start_button_image = al_load_bitmap("start.png");
-    if (!start_button_image) {
-        fprintf(stderr, "Erro ao carregar a imagem start.png.\n");
+    ALLEGRO_BITMAP *menu_button_image = al_load_bitmap("menu.png");
+    ALLEGRO_BITMAP *restart_button_image = al_load_bitmap("restart.png");
+
+    if (!logo_image || !start_button_image || !menu_button_image || !restart_button_image) {
+        fprintf(stderr, "Erro ao carregar as imagens.\n");
         return -1;
     }
 
     ALLEGRO_BITMAP *sprite = al_create_bitmap(1000, 800);
     al_set_target_bitmap(sprite);
-    al_clear_to_color(al_map_rgb(255, 0, 0)); 
-    al_draw_filled_rectangle(200, 0, 400, 200, al_map_rgb(0, 255, 0)); 
-    al_draw_filled_rectangle(400, 0, 600, 200, al_map_rgb(0, 0, 255)); 
-    al_draw_filled_rectangle(600, 0, 800, 200, al_map_rgb(255, 255, 0)); 
+    al_clear_to_color(al_map_rgb(255, 0, 0));
+    al_draw_filled_rectangle(200, 0, 400, 200, al_map_rgb(0, 255, 0));
+    al_draw_filled_rectangle(400, 0, 600, 200, al_map_rgb(0, 0, 255));
+    al_draw_filled_rectangle(600, 0, 800, 200, al_map_rgb(255, 255, 0));
     al_set_target_bitmap(al_get_backbuffer(display));
 
     int screen_width = al_get_display_width(display);
     int screen_height = al_get_display_height(display);
 
-    int logo_width = al_get_bitmap_width(logo_image);
-    int logo_height = al_get_bitmap_height(logo_image);
-
-    int logo_x = (screen_width - logo_width) / 2;
-    int logo_y = 100; 
-
+    // Botões e posicionamento
     int start_button_width = al_get_bitmap_width(start_button_image);
     int start_button_height = al_get_bitmap_height(start_button_image);
     int start_button_x = (screen_width - start_button_width) / 2;
-    int start_button_y = logo_y + logo_height + 100;
+    int start_button_y = 300;
+
+    int menu_button_width = al_get_bitmap_width(menu_button_image);
+    int menu_button_height = al_get_bitmap_height(menu_button_image);
+    int menu_button_x = screen_width / 2 - menu_button_width - 20;
+    int menu_button_y = 400;
+
+    int restart_button_width = al_get_bitmap_width(restart_button_image);
+    int restart_button_height = al_get_bitmap_height(restart_button_image);
+    int restart_button_x = screen_width / 2 + 20;
+    int restart_button_y = 400;
 
     ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
     al_register_event_source(event_queue, al_get_display_event_source(display));
@@ -88,22 +91,35 @@ int main() {
                     event.mouse.y >= start_button_y && event.mouse.y <= start_button_y + start_button_height) {
                     current_state = STATE_GAME;
                 }
+            } else if (current_state == STATE_GAME) {
+                // Simulação de fim de jogo
+                current_state = STATE_GAME_OVER;
+            } else if (current_state == STATE_GAME_OVER) {
+                if (event.mouse.x >= menu_button_x && event.mouse.x <= menu_button_x + menu_button_width &&
+                    event.mouse.y >= menu_button_y && event.mouse.y <= menu_button_y + menu_button_height) {
+                    current_state = STATE_START;
+                } else if (event.mouse.x >= restart_button_x && event.mouse.x <= restart_button_x + restart_button_width &&
+                           event.mouse.y >= restart_button_y && event.mouse.y <= restart_button_y + restart_button_height) {
+                    current_state = STATE_GAME;
+                }
             }
         }
 
         al_clear_to_color(al_map_rgb(255, 255, 255));
 
         if (current_state == STATE_START) {
-            al_draw_bitmap(logo_image, logo_x, logo_y, 0);
-            al_draw_text(font, al_map_rgb(0, 0, 0), screen_width / 2, logo_y + logo_height + 50,
-                         ALLEGRO_ALIGN_CENTER, "Facça o que Memento diz. Siga o padrão de luzes e sons o máximo que puder... se puder!");
-
-            al_draw_bitmap(start_button_image, start_button_x, start_button_y, 0); 
+            al_draw_bitmap(logo_image, (screen_width - al_get_bitmap_width(logo_image)) / 2, 100, 0);
+            al_draw_bitmap(start_button_image, start_button_x, start_button_y, 0);
         } else if (current_state == STATE_GAME) {
+            // o jogo irá ficar aqui
             al_draw_bitmap_region(sprite, 0, 0, 200, 200, 300, 175, 0);
             al_draw_bitmap_region(sprite, 200, 0, 200, 200, 300, 425, 0);
             al_draw_bitmap_region(sprite, 400, 0, 200, 200, 175, 300, 0);
             al_draw_bitmap_region(sprite, 600, 0, 200, 200, 425, 300, 0);
+        } else if (current_state == STATE_GAME_OVER) {
+            al_draw_text(font, al_map_rgb(255, 0, 0), screen_width / 2, 200, ALLEGRO_ALIGN_CENTER, "Game Over");
+            al_draw_bitmap(menu_button_image, menu_button_x, menu_button_y, 0);
+            al_draw_bitmap(restart_button_image, restart_button_x, restart_button_y, 0);
         }
 
         al_flip_display();
@@ -112,6 +128,8 @@ int main() {
     al_destroy_font(font);
     al_destroy_bitmap(logo_image);
     al_destroy_bitmap(start_button_image);
+    al_destroy_bitmap(menu_button_image);
+    al_destroy_bitmap(restart_button_image);
     al_destroy_bitmap(sprite);
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
