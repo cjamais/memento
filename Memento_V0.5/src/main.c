@@ -37,10 +37,9 @@ int main() {
     ALLEGRO_BITMAP* prismaPadrao = al_load_bitmap("assets/img/prisma.png");
     ALLEGRO_BITMAP* prismaClaro = al_load_bitmap("assets/img/prisma_claro.png");
     ALLEGRO_FONT* font2 = al_load_font("assets/fonts/Poppins-Medium.ttf", 24, 0);
-    if (!font2) {
-        printf("Erro ao carregar a fonte.\n");
-        return -1;
-    }
+    ALLEGRO_BITMAP* icone = al_load_bitmap("assets/img/icone.png");
+
+    al_set_display_icon(tela, icone);
 
     if (!prismaPadrao) {
         printf("Erro ao carregar a imagem prisma.png.\n");
@@ -226,6 +225,12 @@ int main() {
                             if (event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
                                 enter_pressionado = true;
                             }
+                        }
+                        if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+                            running = false;
+                            errou = 1;
+                            enter_pressionado = true;
+                            break;
                         }
                     }
                     errou = 1;
