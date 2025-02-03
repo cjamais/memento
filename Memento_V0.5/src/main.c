@@ -1,7 +1,7 @@
 ﻿#include "../lib/addons.h"
 #include "../lib/jogo.h"
 #include "../lib/queue.h"
-#define MAX_RODADAS 3
+#define MAX_RODADAS 100
 
 int main() {
 
@@ -11,11 +11,17 @@ int main() {
         return -1;
     }
 
+    al_install_audio();
+    al_init_acodec_addon();
+    al_reserve_samples(4);
+
     ALLEGRO_EVENT_QUEUE* event_queue = al_create_event_queue();
     ALLEGRO_FONT* font = al_create_builtin_font();
     ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60.0);
     ALLEGRO_DISPLAY* tela = al_create_display(800, 800);
     ALLEGRO_COLOR cores[4];
+    ALLEGRO_SAMPLE* sons[5];
+    inicializar_sons(sons);
 
     int posicoes[4][2];
     inicializar_posicoes(posicoes);
@@ -75,7 +81,7 @@ int main() {
 
         for (int i = 0; i < MAX_RODADAS; i++) {
             int random = (rand() % 4) + 1;
-            printf("%d %s\n", random, enqueue(fila_original, random) ? "Entrou" : "Não entrou");
+            enqueue(fila_original, random);
         }
 
 		desenhar_prisma(prismaPadrao);
@@ -90,30 +96,32 @@ int main() {
             int x_texto = (800 - al_get_text_width(font2, texto_rodada)) / 2;
             al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto, y_texto, 0, texto_rodada);
 
-            printf("\nRodada %d\nCores que piscaram:", rodada);
             for (int i = 0; i < rodada; i++) {
                 dequeue(fila_original, &saiu);
                 enqueue(sequencia, saiu);
                 enqueue(fila_copia, saiu);
-                printf(" %d", saiu);
 
                 // EXIBINDO AS CORES DA RODADA
                 switch (saiu) {
                     case 1:
                         // VERMELHO
                         al_draw_bitmap_region(prismaClaro, 0, 0, 200, 200, 300, 175, 0);
+                        tocar_som(1,sons);
                         break;
                     case 2:
                         // AMARELO
                         al_draw_bitmap_region(prismaClaro, 200, 0, 200, 200, 300, 425, 0);
+                        tocar_som(2,sons);
                         break;
                     case 3:
                         // VERDE
                         al_draw_bitmap_region(prismaClaro, 400, 0, 200, 200, 175, 300, 0);
+                        tocar_som(3,sons);
                         break;
                     case 4:
                         // AZUL
                         al_draw_bitmap_region(prismaClaro, 600, 0, 200, 200, 425, 300, 0);
+                        tocar_som(4,sons);
                         break;
                     default:
                         break;
@@ -122,7 +130,7 @@ int main() {
                 al_flip_display();
 
                 double start_time = al_get_time();
-                while (al_get_time() - start_time < 0.7) {
+                while (al_get_time() - start_time < 0.2) {
                     while (al_get_next_event(event_queue, &event)) {
                         if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
                             running = false;
@@ -192,7 +200,7 @@ int main() {
                     }
                 }
 
-                piscar_entrada(entrada, prismaClaro, prismaPadrao);
+                piscar_entrada(entrada, prismaClaro, prismaPadrao, sons);
 
                 if (entrada == esperado) {
                     printf("OK\n");
@@ -202,6 +210,7 @@ int main() {
                         errou = 1;
                         break;
                     }
+
                     char texto_erro[50];
                     char texto_enter[50];
                     sprintf(texto_erro, "Errou");
@@ -212,9 +221,11 @@ int main() {
                     al_draw_text(font2, al_map_rgb(100, 100, 100), x_texto_enter, y_texto+50, 0, texto_enter);
                     
                     al_flip_display();
-                    
-                    printf("ERROU! A sequência era %d.\n", esperado);
-                    printf("Pressione ENTER para jogar novamente.\n");
+
+                    ALLEGRO_SAMPLE_ID sample_id;
+                    al_play_sample(sons[4], 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, &sample_id);
+                    al_rest(0.5);
+                    al_stop_sample(&sample_id);
                     
                     bool enter_pressionado = false;
                     while (!enter_pressionado) {
@@ -251,6 +262,9 @@ int main() {
         destroy(fila_original);
     }
 
+    for (int i = 0; i < 4; i++) {
+        al_destroy_sample(sons[i]);
+    }
     al_destroy_bitmap(prismaPadrao);
     al_destroy_font(font);
     al_destroy_font(font2);

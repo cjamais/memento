@@ -29,7 +29,11 @@ int identificar_cor_mouse(int x, int y) {
     return 0;
 }
 
-void piscar_entrada(int entrada, ALLEGRO_BITMAP* prismaClaro, ALLEGRO_BITMAP* prismaPadrao) {
+void piscar_entrada(int entrada, ALLEGRO_BITMAP* prismaClaro, ALLEGRO_BITMAP* prismaPadrao, ALLEGRO_SAMPLE* sons[]) {
+    if (entrada >= 1 && entrada <= 4) {
+        tocar_som(entrada, sons);  // Toca o som correspondente
+    }
+
     switch (entrada) {
     case 1:
         //VERMELHO
@@ -59,4 +63,13 @@ void piscar_entrada(int entrada, ALLEGRO_BITMAP* prismaClaro, ALLEGRO_BITMAP* pr
         break;
     }
     desenhar_prisma(prismaPadrao);
+}
+
+void tocar_som(int entrada, ALLEGRO_SAMPLE* sons[]) {
+    if (entrada >= 1 && entrada <= 4) {
+        ALLEGRO_SAMPLE_ID sample_id;
+        al_play_sample(sons[entrada - 1], 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, &sample_id);
+        al_rest(0.2);
+        al_stop_sample(&sample_id);
+    }
 }

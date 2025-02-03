@@ -6,9 +6,6 @@ void iniciar_addons(ALLEGRO_DISPLAY* tela, ALLEGRO_EVENT_QUEUE* event_queue, ALL
     al_init_image_addon();
     al_install_mouse();
     al_install_keyboard();
-    al_init_acodec_addon();
-    al_install_audio();
-    al_reserve_samples(4);
 
     al_set_window_position(tela, 600, 100);
     al_set_window_title(tela, "Memento");
@@ -33,4 +30,22 @@ void desenhar_prisma(ALLEGRO_BITMAP* prisma) {
 
     // Atualiza a exibi��o
     al_flip_display();
+}
+
+void inicializar_sons(ALLEGRO_SAMPLE* sons[]) {
+    char* arquivos[5] = {
+        "assets/sounds/red.wav",
+        "assets/sounds/yellow.wav",
+        "assets/sounds/green.wav",
+        "assets/sounds/blue.wav",
+        "assets/sounds/error.wav"
+    };
+
+    for (int i = 0; i < 5; i++) {
+        sons[i] = al_load_sample(arquivos[i]);
+        if (!sons[i]) {
+            fprintf(stderr, "Erro ao carregar %s\n", arquivos[i]);
+            exit(EXIT_FAILURE);
+        }
+    }
 }
