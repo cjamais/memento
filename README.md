@@ -47,7 +47,7 @@ Ao final de cada rodada, a fila auxiliar é desenfileirada e seus elementos são
 1. Certifique-se de ter o **gcc** e o **Make** instalados
 2. Clone este repositório:
    ```bash
-   https://github.com/cjamais/genius.git
+   https://github.com/cjamais/memento.git
 3. Acesse o terminal, digite `make win` e aperte enter
 4. Escreva `make play` e aperte enter
 5. Um executável será criado, acesse-o em sua pasta ou pelo terminal escrevendo `.\Memento.exe`
