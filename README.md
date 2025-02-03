@@ -1,11 +1,12 @@
 # 🎮 Memento - Jogo da memória com Allegro 5
 O seguinte projeto implementa o clássico jogo Genius/Simon utilizando a biblioteca Allegro 5 e conceitos aprendidos na disciplina de Estrutura de Dados. O jogo desafia o jogador a memorizar e repetir sequências de cores e sons, aumentando a dificuldade conforme o progresso.
 
-## 🛠️ Tecnologias
+## 🛠️ Tecnologias e ferramentas
 
 - Estrutura de dados: Fila (Queue) 🛒➡️
 - Linguagem de programação: ©️
 - Biblioteca: Allegro 5 🐊
+- Ambiente de desenvolvimento: Visual Studio e Visual Studio Code 💻
 
 ## 📜 Funcionalidades
 
@@ -56,3 +57,10 @@ Ao clonar o repositório, um arquivo executável (Memento.exe) será baixado. Vo
 
 ##  📚 Sobre o Allegro 5
 O Allegro 5 é uma biblioteca gráfica poderosa para desenvolvimento de jogos em C/C++. Suporta gráficos, áudio, entrada de usuário e manipulação de eventos, tornando o desenvolvimento mais simples e eficiente.
+
+## 👨‍💻 Autores
+- [Gabriel Albino](https://www.linkedin.com/in/gabrielalbino05/)
+- [Gabrielle Ulisses](https://www.linkedin.com/in/gabrielle-ulisses/)
+- [Otávio Baroni](https://www.linkedin.com/in/otaviobaroni/)
+- [Rafael Matias](https://www.linkedin.com/in/rafael-matias-dev/)
+
