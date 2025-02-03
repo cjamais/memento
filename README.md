@@ -43,7 +43,7 @@ Ao final de cada rodada, a fila auxiliar é desenfileirada e seus elementos são
 4. Execute o jogo --->
 
 ### Windows 🪟
-1. Certifique-se de ter o **gcc** e o **GnuWin32** instalados
+1. Certifique-se de ter o **gcc** e o **Make** instalados
 2. Clone este repositório:
    ```bash
    https://github.com/cjamais/genius.git
