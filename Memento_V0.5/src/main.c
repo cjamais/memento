@@ -72,6 +72,7 @@ int main() {
         T_Queue fila_original, sequencia, fila_copia;
         T_Info saiu, esperado, entrada_usuario;
         int errou = 0;
+        int pontuacao = 0; 
 
         fila_original = init(MAX_RODADAS);
         sequencia = init(MAX_RODADAS);
@@ -84,7 +85,7 @@ int main() {
             enqueue(fila_original, random);
         }
 
-		desenhar_prisma(prismaPadrao);
+        desenhar_prisma(prismaPadrao);
 
         int rodada = 1;
         while (rodada <= MAX_RODADAS && !errou) {
@@ -95,6 +96,14 @@ int main() {
             int y_texto = 50;
             int x_texto = (800 - al_get_text_width(font2, texto_rodada)) / 2;
             al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto, y_texto, 0, texto_rodada);
+
+            // ADICIONEI AQUI
+            // PONTUAÇÃO
+            char texto_pontuacao[50];
+            sprintf(texto_pontuacao, "Pontuação: %d", pontuacao);
+            int x_texto_pontuacao = al_get_display_width(tela) - al_get_text_width(font2, texto_pontuacao) - 10; 
+            int y_texto_pontuacao = 10; 
+            al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto_pontuacao, y_texto_pontuacao, 0, texto_pontuacao);
 
             for (int i = 0; i < rodada; i++) {
                 dequeue(fila_original, &saiu);
@@ -143,6 +152,7 @@ int main() {
 
                 desenhar_prisma(prismaPadrao);
                 al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto, y_texto, 0, texto_rodada);
+                al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto_pontuacao, y_texto + 30, 0, texto_pontuacao);
                 al_flip_display();
 
                 start_time = al_get_time();
@@ -167,7 +177,7 @@ int main() {
 
             al_flush_event_queue(event_queue);
 
-			//WHILE DA ENTRADA DO USUÁRIO
+            //WHILE DA ENTRADA DO USUÁRIO
             while (!is_empty(sequencia)) {
                 dequeue(sequencia, &esperado);
 
@@ -196,7 +206,6 @@ int main() {
                     else if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
                         entrada = identificar_cor_mouse(event.mouse.x, event.mouse.y);
                         entrada_valida = (entrada > 0 && entrada <= 4);
-						
                     }
                 }
 
@@ -204,6 +213,7 @@ int main() {
 
                 if (entrada == esperado) {
                     printf("OK\n");
+                    pontuacao += 5; // A CADA ACERTO + 5 PONTOS
                 } else {
                     if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
                         running = false;
@@ -219,7 +229,12 @@ int main() {
                     sprintf(texto_enter, "Pressione ENTER para jogar novamente");
                     int x_texto_enter = (800 - al_get_text_width(font2, texto_enter)) / 2;
                     al_draw_text(font2, al_map_rgb(100, 100, 100), x_texto_enter, y_texto+50, 0, texto_enter);
-                    
+                    // PONTUAÇÃO FINAL
+                    char texto_pontuacao_final[50];
+                    sprintf(texto_pontuacao_final, "Pontuação Final: %d", pontuacao);
+                    int x_texto_pontuacao_final = (800 - al_get_text_width(font2, texto_pontuacao_final)) / 2;
+                    al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto_pontuacao_final, y_texto + 80, 0, texto_pontuacao_final);
+
                     al_flip_display();
 
                     ALLEGRO_SAMPLE_ID sample_id;
