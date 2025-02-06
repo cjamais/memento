@@ -117,7 +117,7 @@ int main() {
             al_draw_bitmap_region(sprite, 400, 0, 200, 200, 175, 300, 0);
             al_draw_bitmap_region(sprite, 600, 0, 200, 200, 425, 300, 0);
         } else if (current_state == STATE_GAME_OVER) {
-            al_draw_text(font, al_map_rgb(255, 0, 0), screen_width / 2, 200, ALLEGRO_ALIGN_CENTER, "Game Over");
+            al_draw_text(font, al_map_rgb(255, 0, 0), screen_width / 2, 200, ALLEGRO_ALIGN_CENTER, "G A M E  O V E R");
             al_draw_bitmap(menu_button_image, menu_button_x, menu_button_y, 0);
             al_draw_bitmap(restart_button_image, restart_button_x, restart_button_y, 0);
         }
