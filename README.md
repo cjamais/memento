@@ -53,7 +53,10 @@ Ao final de cada rodada, a fila auxiliar é desenfileirada e seus elementos são
 5. Um executável será criado, acesse-o em sua pasta ou pelo terminal escrevendo `.\Memento.exe`
 
 #### Alternativa sem Make
-Ao invés de utilizar o make no terminal, digite `gcc -I allegro\include -c src/*.c`, aperte enter, digite `gcc -I allegro\include *.o -o Memento.exe liballegro_monolith.dll.a`, e depois de apertar enter, ele criará o executável, rode com `.\Memento.exe`
+Ao invés de utilizar o make no terminal, digite
+1. `gcc -I allegro\include -c src/*.c`
+2. `gcc -I allegro\include *.o -o Memento.exe liballegro_monolith.dll.a`<br>
+3. Rode o executável gerado com `.\Memento.exe`
 
 #### Outra alternativa
 Ao clonar o repositório, um arquivo executável (Memento.exe) será baixado. Você pode jogar através dessa última versão compilada. 
