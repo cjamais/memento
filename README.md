@@ -35,22 +35,12 @@ O programa então libera a entrada do jogador. O jogador pode utilizar o mouse o
 Ao final de cada rodada, a fila auxiliar é desenfileirada e seus elementos são reinseridos na fila principal, restaurando a sequência para que o jogo continue de onde parou. O contador de rodadas é incrementado em um, e o processo se repete até o final do jogo, seja pela vitória do jogador, ao completar todas as rodadas sem erros, ou pela derrota, caso ele cometa algum erro.
 
 ## 📥 Instalação
-
-<!--- 1. Certifique-se de ter o Allegro 5 instalado em seu sistema.
-2. Clone este repositório:
-   ```https://github.com/cjamais/genius.git```
-3. Compile o código com:
-  gcc -o genius main.c queue.c genius.c -lallegro -lallegro_primitives -lallegro_audio -lallegro_acodec
-4. Execute o jogo --->
-
 ### Windows 🪟
 1. Certifique-se de ter o **gcc** e o **Make** instalados
 2. Clone este repositório:
    ```bash
    https://github.com/cjamais/memento.git
-3. Acesse o terminal, digite `make win` e aperte enter
-4. Escreva `make play` e aperte enter
-5. Um executável será criado, acesse-o em sua pasta ou pelo terminal escrevendo `.\Memento.exe`
+3. Acesse o terminal, digite `make run`, aperte enter e espere o jogo carregar.
 
 #### Alternativa sem Make
 Ao invés de utilizar o make no terminal, digite
@@ -60,6 +50,13 @@ Ao invés de utilizar o make no terminal, digite
 
 #### Outra alternativa
 Ao clonar o repositório, um arquivo executável (Memento.exe) será baixado. Você pode jogar através dessa última versão compilada. 
+
+### Linux 🐧
+1. Certifique-se de ter o **gcc** e o **Make** instalados
+2. Clone este repositório:
+   ```bash
+   https://github.com/cjamais/memento.git
+3. Acesse o terminal, digite `make run`, aperte enter e espere o jogo carregar.
 
 ##  📚 Sobre o Allegro 5
 O Allegro 5 é uma biblioteca gráfica poderosa para desenvolvimento de jogos em C/C++. Suporta gráficos, áudio, entrada de usuário e manipulação de eventos, tornando o desenvolvimento mais simples e eficiente.
