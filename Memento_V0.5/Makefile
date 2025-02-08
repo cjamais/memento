@@ -1,16 +1,24 @@
-SRC=src/*.c
-NAME=Memento
-CC=gcc
-RM=rm -f
-OBJ=*.o
-LIB=-I allegro\include
-MONOLITH=liballegro_monolith.dll.a
+CC = gcc
+CFLAGS = -Wall -g
+INCLUDES = -I/usr/include/allegro5
 
-win: files.o
-	$(CC) $(LIB) $(OBJ) -o $(NAME).exe $(MONOLITH)
+## Verifica o sistema operacional
+ifeq ($(OS),Windows_NT)
+    LDFLAGS = -lallegro -lallegro_image -lallegro_font -lallegro_ttf -lallegro_primitives -lallegro_audio -lallegro_acodec
+    EXE = Memento.exe
+else
+    LDFLAGS = -lallegro -lallegro_image -lallegro_font -lallegro_ttf -lallegro_primitives -lallegro_audio -lallegro_acodec
+    EXE = Memento
+endif
 
-files.o:
-	$(CC) $(LIB) -c $(SRC)
+SRC = src/main.c src/jogo_impl.c src/queue_impl.c src/addons_impl.c
+OBJ = $(SRC:.c=.o)
 
-play:
-	.\$(NAME).exe
+$(EXE): $(OBJ)
+	$(CC) $(OBJ) -o $(EXE) $(LDFLAGS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+clean:
+	rm -f $(OBJ) $(EXE)
