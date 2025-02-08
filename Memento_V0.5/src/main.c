@@ -100,10 +100,10 @@ int main() {
             // ADICIONEI AQUI
             // PONTUAÇÃO
             char texto_pontuacao[50];
-            sprintf(texto_pontuacao, "Pontuação: %d", pontuacao);
-            int x_texto_pontuacao = al_get_display_width(tela) - al_get_text_width(font2, texto_pontuacao) - 10; 
-            int y_texto_pontuacao = 10; 
-            al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto_pontuacao, y_texto_pontuacao, 0, texto_pontuacao);
+            sprintf(texto_pontuacao, "%d pontos", pontuacao);
+            int x_texto_pontuacao = (800 - al_get_text_width(font2, texto_pontuacao)) / 2; 
+            int y_texto_pontuacao = 670; 
+            al_draw_text(font2, al_map_rgb(100, 100, 100), x_texto_pontuacao, y_texto_pontuacao, 0, texto_pontuacao);
 
             for (int i = 0; i < rodada; i++) {
                 dequeue(fila_original, &saiu);
@@ -152,7 +152,7 @@ int main() {
 
                 desenhar_prisma(prismaPadrao);
                 al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto, y_texto, 0, texto_rodada);
-                al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto_pontuacao, y_texto + 30, 0, texto_pontuacao);
+                al_draw_text(font2, al_map_rgb(100, 100, 100), x_texto_pontuacao, y_texto_pontuacao, 0, texto_pontuacao);
                 al_flip_display();
 
                 start_time = al_get_time();
@@ -185,6 +185,7 @@ int main() {
                 int entrada = 0;
 
                 al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto, y_texto, 0, texto_rodada);
+                al_draw_text(font2, al_map_rgb(100, 100, 100), x_texto_pontuacao, y_texto_pontuacao, 0, texto_pontuacao);
                 char texto_sua_vez[50];
                 sprintf(texto_sua_vez, "Sua vez");
                 int x_texto_sua_vez = (800 - al_get_text_width(font2, texto_sua_vez)) / 2;
@@ -214,26 +215,26 @@ int main() {
                 if (entrada == esperado) {
                     printf("OK\n");
                     pontuacao += 5; // A CADA ACERTO + 5 PONTOS
+                    sprintf(texto_pontuacao, "%d pontos", pontuacao);
+                    int x_texto_pontuacao = (800 - al_get_text_width(font2, texto_pontuacao)) / 2;
                 } else {
                     if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
                         running = false;
                         errou = 1;
                         break;
                     }
-
                     char texto_erro[50];
                     char texto_enter[50];
-                    sprintf(texto_erro, "Errou");
+                    sprintf(texto_erro, "ERROU");
                     int x_texto_erro = (800 - al_get_text_width(font2, texto_erro)) / 2;
                     al_draw_text(font2, al_map_rgb(255, 87, 51), x_texto_erro, y_texto, 0, texto_erro);
                     sprintf(texto_enter, "Pressione ENTER para jogar novamente");
                     int x_texto_enter = (800 - al_get_text_width(font2, texto_enter)) / 2;
                     al_draw_text(font2, al_map_rgb(100, 100, 100), x_texto_enter, y_texto+50, 0, texto_enter);
                     // PONTUAÇÃO FINAL
-                    char texto_pontuacao_final[50];
-                    sprintf(texto_pontuacao_final, "Pontuação Final: %d", pontuacao);
-                    int x_texto_pontuacao_final = (800 - al_get_text_width(font2, texto_pontuacao_final)) / 2;
-                    al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto_pontuacao_final, y_texto + 80, 0, texto_pontuacao_final);
+                    sprintf(texto_pontuacao, "Você chegou até a rodada %d e terminou com %d pontos", rodada, pontuacao);
+                    x_texto_pontuacao = (800 - al_get_text_width(font2, texto_pontuacao)) / 2;
+                    al_draw_text(font2, al_map_rgb(100, 100, 100), x_texto_pontuacao, y_texto_pontuacao, 0, texto_pontuacao);
 
                     al_flip_display();
 
