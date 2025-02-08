@@ -1,7 +1,7 @@
 ﻿#include "../lib/addons.h"
 #include "../lib/jogo.h"
 #include "../lib/queue.h"
-#define MAX_RODADAS 5
+#define MAX_RODADAS 50
 
 int main() {
 
@@ -431,7 +431,9 @@ int main() {
                     dequeue(fila_copia, &saiu);
                     enqueue(fila_original, saiu);
                 }
-                rodada++;
+                if(!errou){
+                    rodada++;
+                }
                 al_rest(0.5);
             }
             if (rodada > MAX_RODADAS) {
