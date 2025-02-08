@@ -19,7 +19,6 @@ int main() {
     ALLEGRO_FONT* font = al_create_builtin_font();
     ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60.0);
     ALLEGRO_DISPLAY* tela = al_create_display(800, 800);
-    ALLEGRO_COLOR cores[4];
     ALLEGRO_SAMPLE* sons[5];
     inicializar_sons(sons);
 
@@ -70,7 +69,7 @@ int main() {
 
         //PREPRARAÇÃO DA FILA
         T_Queue fila_original, sequencia, fila_copia;
-        T_Info saiu, esperado, entrada_usuario;
+        T_Info saiu, esperado;
         int errou = 0;
         int pontuacao = 0; 
 
@@ -216,7 +215,6 @@ int main() {
                     printf("OK\n");
                     pontuacao += 5; // A CADA ACERTO + 5 PONTOS
                     sprintf(texto_pontuacao, "%d pontos", pontuacao);
-                    int x_texto_pontuacao = (800 - al_get_text_width(font2, texto_pontuacao)) / 2;
                 } else {
                     if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
                         running = false;
