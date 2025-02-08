@@ -10,3 +10,4 @@
 void iniciar_addons(ALLEGRO_DISPLAY* tela, ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_FONT* font, ALLEGRO_TIMER* timer);
 void desenhar_prisma(ALLEGRO_BITMAP* prisma);
 void inicializar_sons(ALLEGRO_SAMPLE* sons[]);
+void fade_out(ALLEGRO_DISPLAY* tela, ALLEGRO_BITMAP* inicio, ALLEGRO_FONT* font2);

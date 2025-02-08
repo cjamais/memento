@@ -13,13 +13,13 @@ int main() {
 
     al_install_audio();
     al_init_acodec_addon();
-    al_reserve_samples(4);
+    al_reserve_samples(6);
 
     ALLEGRO_EVENT_QUEUE* event_queue = al_create_event_queue();
     ALLEGRO_FONT* font = al_create_builtin_font();
     ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60.0);
     ALLEGRO_DISPLAY* tela = al_create_display(800, 800);
-    ALLEGRO_SAMPLE* sons[5];
+    ALLEGRO_SAMPLE* sons[6];
     inicializar_sons(sons);
 
     int posicoes[4][2];
@@ -41,21 +41,55 @@ int main() {
 
     ALLEGRO_BITMAP* prismaPadrao = al_load_bitmap("assets/img/prisma.png");
     ALLEGRO_BITMAP* prismaClaro = al_load_bitmap("assets/img/prisma_claro.png");
+    ALLEGRO_BITMAP* inicio = al_load_bitmap("assets/img/inicio.png");
     ALLEGRO_FONT* font2 = al_load_font("assets/fonts/Poppins-Medium.ttf", 24, 0);
     ALLEGRO_BITMAP* icone = al_load_bitmap("assets/img/icone.png");
 
     al_set_display_icon(tela, icone);
+    al_clear_to_color(al_map_rgb(255, 255, 255));
+    int x_inicio = (800 - al_get_bitmap_width(inicio)) / 2;
+    int y_inicio = (800 - al_get_bitmap_height(inicio)) / 2;
 
-    if (!prismaPadrao) {
-        printf("Erro ao carregar a imagem prisma.png.\n");
-        al_destroy_font(font);
-        al_destroy_timer(timer);
-        al_destroy_event_queue(event_queue);
-        al_destroy_display(tela);
-        return -1;
+    char texto_inicio[50];
+    sprintf(texto_inicio, "Aperte ENTER para jogar");
+    int x_texto = (800 - al_get_text_width(font2, texto_inicio)) / 2;
+    al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto, y_inicio+150, 0, texto_inicio);
+
+    al_draw_bitmap(inicio, x_inicio, y_inicio-50, 0);
+    al_flip_display();
+
+    ALLEGRO_SAMPLE_ID background_song;
+    al_play_sample(sons[5], 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, &background_song);
+
+    //Espera o usuário apertar ENTER para começar
+    bool enter_start = false;
+    bool running = false;
+    while (!enter_start) {
+        ALLEGRO_EVENT event;
+        al_wait_for_event(event_queue, &event);
+
+        if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+            if (event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
+                enter_start = true;
+                running = true;
+                al_stop_sample(&background_song);
+                al_clear_to_color(al_map_rgb(255, 255, 255));
+                al_draw_bitmap(inicio, x_inicio, y_inicio-50, 0);
+                al_draw_text(font2, al_map_rgb(200, 200, 200), x_texto, y_inicio+150, 0, texto_inicio);
+                al_flip_display();
+                al_rest(0.1);
+                al_clear_to_color(al_map_rgb(255, 255, 255));
+                al_draw_bitmap(inicio, x_inicio, y_inicio-50, 0);
+                al_draw_text(font2, al_map_rgb(50, 50, 50), x_texto, y_inicio+150, 0, texto_inicio);
+                al_flip_display();
+                al_rest(0.4);
+            }
+        }
+        if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+            break;
+        }
+        al_rest(0.01);
     }
-
-    bool running = true;
 
     //LOOP PRINCIPAL DO JOGO
     while (running) {
@@ -188,7 +222,7 @@ int main() {
                 char texto_sua_vez[50];
                 sprintf(texto_sua_vez, "Sua vez");
                 int x_texto_sua_vez = (800 - al_get_text_width(font2, texto_sua_vez)) / 2;
-                al_draw_text(font2, al_map_rgb(100, 100, 100), x_texto_sua_vez, y_texto+50, 0, texto_sua_vez);
+                al_draw_text(font2, al_map_rgb(77, 149, 151), x_texto_sua_vez, y_texto+50, 0, texto_sua_vez);
                 al_flip_display();
 
                 while (!entrada_valida) {
