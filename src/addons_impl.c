@@ -33,16 +33,19 @@ void desenhar_prisma(ALLEGRO_BITMAP* prisma) {
 }
 
 void inicializar_sons(ALLEGRO_SAMPLE* sons[]) {
-    char* arquivos[6] = {
+    char* arquivos[9] = {
         "assets/sounds/red.wav",
         "assets/sounds/yellow.wav",
         "assets/sounds/green.wav",
         "assets/sounds/blue.wav",
         "assets/sounds/error.wav",
-        "assets/sounds/background.wav"
+        "assets/sounds/background.wav",
+        "assets/sounds/cjamais.wav",
+        "assets/sounds/violins.wav",
+        "assets/sounds/victory.wav"
     };
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 9; i++) {
         sons[i] = al_load_sample(arquivos[i]);
         if (!sons[i]) {
             fprintf(stderr, "Erro ao carregar %s\n", arquivos[i]);

@@ -5,6 +5,7 @@
         "allegro.h": "c",
         "stdio.h": "c",
         "addons.h": "c",
-        "queue.h": "c"
+        "queue.h": "c",
+        "jogo.h": "c"
     }
 }
