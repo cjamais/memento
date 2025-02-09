@@ -77,7 +77,7 @@ bool dequeue(T_Queue queue, T_Info* element) {
 
 int size(T_Queue queue) {
     if (queue == NULL) {
-        return -1; // Indica erro (fila n�o inicializada)
+        return -1; //indica erro (fila não inicializada)
     }
-    return queue->last + 1; // O n�mero de elementos � `last + 1`
+    return queue->last + 1; //o número de elementos é `last + 1`
 }

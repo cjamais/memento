@@ -3,7 +3,7 @@
 void inicializar_posicoes(int posicoes[][2]) {
     /*
     * A matriz `posicoes` armazena as coordenadas (x, y) do centro de cada cor/prisma.
-    * Usamos `posicoes[cor - 1]` para mapear a cor (1-4) ao �ndice correto (0-3).
+    * Usamos `posicoes[cor - 1]` para mapear a cor (1-4) ao índice correto (0-3).
     */
     posicoes[0][0] = 300; posicoes[0][1] = 175; // Vermelho
 	posicoes[1][0] = 300; posicoes[1][1] = 425; // Amarelo
@@ -11,6 +11,7 @@ void inicializar_posicoes(int posicoes[][2]) {
     posicoes[3][0] = 425; posicoes[3][1] = 300; // Azul
 }
 
+//identifica a tecla pressionada a uma cor e número correspondente
 int identificar_cor_teclado(int tecla) {
     switch (tecla) {
     case ALLEGRO_KEY_UP:    return 1;
@@ -21,6 +22,7 @@ int identificar_cor_teclado(int tecla) {
     }
 }
 
+//identifica a região de clique a uma cor e número correspondente
 int identificar_cor_mouse(int x, int y) {
     if (x >= 300 && x <= 500 && y >= 175 && y <= 375) return 1;
     if (x >= 175 && x <= 375 && y >= 300 && y <= 500) return 3;
@@ -29,9 +31,10 @@ int identificar_cor_mouse(int x, int y) {
     return 0;
 }
 
+//animação de clarear quadrados do prisma
 void piscar_entrada(int entrada, ALLEGRO_BITMAP* prismaClaro, ALLEGRO_BITMAP* prismaPadrao, ALLEGRO_SAMPLE* sons[]) {
     if (entrada >= 1 && entrada <= 4) {
-        tocar_som(entrada, sons);  // Toca o som correspondente
+        tocar_som(entrada, sons);//toca o som correspondente
     }
 
     switch (entrada) {
@@ -62,9 +65,10 @@ void piscar_entrada(int entrada, ALLEGRO_BITMAP* prismaClaro, ALLEGRO_BITMAP* pr
     default:
         break;
     }
-    desenhar_prisma(prismaPadrao);
+    desenhar_prisma(prismaPadrao);//volta para o prisma "desligado"
 }
 
+//toca brevemente o som correspondente a cor/número
 void tocar_som(int entrada, ALLEGRO_SAMPLE* sons[]) {
     if (entrada >= 1 && entrada <= 4) {
         ALLEGRO_SAMPLE_ID sample_id;
