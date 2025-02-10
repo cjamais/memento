@@ -39,10 +39,25 @@ O jogo é divido entre camadas e seções de forma a exibir o conteúdo correspo
 ![image](https://github.com/user-attachments/assets/3e846d8c-cf57-4f9c-be9d-1bda23711224)
 
 ## Estratégia de implementação e metodologia
-To-do
+Antes da implementação com o Allegro, rascunhamos e desenvolvemos separadamente a lógica base do jogo (pasta `logica_genius`), realizando testes para verificar se o TAD fila foi implementado da melhor maneira.
+
+![image](https://github.com/user-attachments/assets/609020ac-9970-408e-8f55-e958b6e0eff9)
+
+
+A partir disso, dividimos as responsabilidades: cada um ficou encarregado de aprender e compartilhar conhecimentos sobre diferentes recursos da biblioteca, como eventos de clique e teclado, troca de telas, animação e saída de áudio. Essa divisão teve como objetivo aprofundar o conhecimento na biblioteca e torná-la mais familiar. Com as peças prontas, bastou encaixá-las. O processo demorou um pouco, mas reuniões para compartilhar e discutir a implementação de certos recursos ajudaram a resolver os desafios.
+
+A princípio, utilizamos a IDE Visual Studio para trabalhar, devido à facilidade de integração com a biblioteca Allegro. No entanto, isso logo se tornou um empecilho, tanto pela falta de familiaridade quanto pela incompatibilidade com os sistemas operacionais dos integrantes. A migração para o Visual Studio Code foi essencial, e o uso do controle de versão Git, junto com o repositório no GitHub, nos permitiu acompanhar o andamento do desenvolvimento do jogo de forma organizada.
 
 ## Screenshots
-To-do
+<img src="https://github.com/user-attachments/assets/d1f656e7-b75f-47c8-9108-d19917a7333a" width="100">
+<img src="https://github.com/user-attachments/assets/6b01eb4e-f22c-4905-b4f3-55081eafd88b" width="100">
+<img src="https://github.com/user-attachments/assets/eb61382e-8d82-4f2c-bf30-87bc75c5b68f" width="100">
+<img src="https://github.com/user-attachments/assets/b8104a3c-b558-4f76-9642-709d5b7fe4bc" width="100">
+<img src="https://github.com/user-attachments/assets/89c81291-0144-4e38-a3e3-354df0638f86" width="100">
+<img src="https://github.com/user-attachments/assets/2ea5c568-2de4-4714-bcb4-513eafafe2f5" width="100">
+<img src="https://github.com/user-attachments/assets/e290931e-05ee-4cf7-9bfa-8870901e605a" width="100">
+<img src="https://github.com/user-attachments/assets/33885bc4-f155-4c2d-a2dd-0ba27eceefe8" width="100">
+<img src="https://github.com/user-attachments/assets/cacdcdd9-33cc-40d4-ba69-58dd08815b7c" width="100">
 
 ## 📥 Instalação
 ### Windows 🪟
