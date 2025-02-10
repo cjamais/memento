@@ -48,15 +48,15 @@ A partir disso, dividimos as responsabilidades: cada um ficou encarregado de apr
 A princípio, utilizamos a IDE Visual Studio para trabalhar, devido à facilidade de integração com a biblioteca Allegro. No entanto, isso logo se tornou um empecilho, tanto pela falta de familiaridade quanto pela incompatibilidade com os sistemas operacionais dos integrantes. A migração para o Visual Studio Code foi essencial, e o uso do controle de versão Git, junto com o repositório no GitHub, nos permitiu acompanhar o andamento do desenvolvimento do jogo de forma organizada.
 
 ## 🖼️ Telas
-<img src="https://github.com/user-attachments/assets/d1f656e7-b75f-47c8-9108-d19917a7333a" width="120">
-<img src="https://github.com/user-attachments/assets/6b01eb4e-f22c-4905-b4f3-55081eafd88b" width="120">
-<img src="https://github.com/user-attachments/assets/eb61382e-8d82-4f2c-bf30-87bc75c5b68f" width="120">
-<img src="https://github.com/user-attachments/assets/b8104a3c-b558-4f76-9642-709d5b7fe4bc" width="120">
-<img src="https://github.com/user-attachments/assets/89c81291-0144-4e38-a3e3-354df0638f86" width="120">
-<img src="https://github.com/user-attachments/assets/2ea5c568-2de4-4714-bcb4-513eafafe2f5" width="120">
-<img src="https://github.com/user-attachments/assets/e290931e-05ee-4cf7-9bfa-8870901e605a" width="120">
-<img src="https://github.com/user-attachments/assets/33885bc4-f155-4c2d-a2dd-0ba27eceefe8" width="120">
-<img src="https://github.com/user-attachments/assets/cacdcdd9-33cc-40d4-ba69-58dd08815b7c" width="120">
+<img src="https://github.com/user-attachments/assets/d1f656e7-b75f-47c8-9108-d19917a7333a" width="150">
+<img src="https://github.com/user-attachments/assets/6b01eb4e-f22c-4905-b4f3-55081eafd88b" width="150">
+<img src="https://github.com/user-attachments/assets/eb61382e-8d82-4f2c-bf30-87bc75c5b68f" width="150">
+<img src="https://github.com/user-attachments/assets/b8104a3c-b558-4f76-9642-709d5b7fe4bc" width="150">
+<img src="https://github.com/user-attachments/assets/89c81291-0144-4e38-a3e3-354df0638f86" width="150">
+<img src="https://github.com/user-attachments/assets/2ea5c568-2de4-4714-bcb4-513eafafe2f5" width="150">
+<img src="https://github.com/user-attachments/assets/e290931e-05ee-4cf7-9bfa-8870901e605a" width="150">
+<img src="https://github.com/user-attachments/assets/33885bc4-f155-4c2d-a2dd-0ba27eceefe8" width="150">
+<img src="https://github.com/user-attachments/assets/cacdcdd9-33cc-40d4-ba69-58dd08815b7c" width="150">
 
 ## 📥 Instalação
 ### Windows 🪟
