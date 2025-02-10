@@ -62,9 +62,10 @@ A princípio, utilizamos a IDE Visual Studio para trabalhar, devido à facilidad
 ### Windows 🪟
 1. Certifique-se de ter o **gcc** e o **Make** instalados
 2. Clone este repositório:
+   
    ```bash
    https://github.com/cjamais/memento.git
-3. Acesse o terminal, digite `make run`, aperte enter e espere o jogo carregar.
+4. Acesse o terminal, digite `make run`, aperte enter e espere o jogo carregar.
 
 #### Alternativa sem Make
 Ao invés de utilizar o make no terminal, digite
@@ -78,9 +79,18 @@ Ao clonar o repositório, um arquivo executável (Memento.exe) será baixado. Vo
 ### Linux 🐧
 1. Certifique-se de ter o **gcc** e o **Make** instalados
 2. Clone este repositório:
+   
    ```bash
    https://github.com/cjamais/memento.git
-3. Acesse o terminal, digite `make run`, aperte enter e espere o jogo carregar.
+4. Acesse o terminal, digite `make run`, aperte enter e espere o jogo carregar.
+
+### macOS 🍎
+1. Certifique-se de ter o **gcc** e o **Make** instalados
+2. Clone este repositório:
+   
+   ```bash
+   https://github.com/cjamais/memento.git
+4. Acesse o terminal, digite `make run`, aperte enter e espere o jogo carregar.
 
 ##  📚 Sobre o Allegro 5
 O Allegro 5 é uma biblioteca gráfica poderosa para desenvolvimento de jogos em C/C++. Suporta gráficos, áudio, entrada de usuário e manipulação de eventos, tornando o desenvolvimento mais simples e eficiente.
