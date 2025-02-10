@@ -84,7 +84,7 @@ Ao clonar o repositório, um arquivo executável (Memento.exe) será baixado. Vo
    https://github.com/cjamais/memento.git
 4. Acesse o terminal, digite `make run`, aperte enter e espere o jogo carregar.
 
-### MacOS 
+### macOS 🍎
 1. Certifique-se de ter o **gcc** e o **Make** instalados
 2. Clone este repositório:
    ```bash
