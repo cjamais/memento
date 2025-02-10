@@ -5,7 +5,7 @@
 int main(){
 
     T_Queue fila, sequencia, fila_copia;
-    T_Info saiu, entrada_usuario;
+    T_Info saiu, esperado, entrada_usuario;
     int errou = 0;
 
     fila = init(20);
@@ -19,11 +19,11 @@ int main(){
         printf("%d %s\n", random, enqueue(fila,random) ? "Entrou" : "Não entrou"); 
     }
     
-    int contador = 1;
+    int rodada = 1;
     
-    while(contador<=20 && !errou){
-        printf("Rodada %d\nCores que piscaram:",contador);
-        for(int i=0;i<contador;i++){
+    while(rodada<=20 && !errou){
+        printf("Rodada %d\nCores que piscaram:",rodada);
+        for(int i=0;i<rodada;i++){
             dequeue(fila,&saiu);
             enqueue(sequencia,saiu);
             enqueue(fila_copia,saiu);
@@ -33,11 +33,11 @@ int main(){
             dequeue(fila,&saiu);
             enqueue(fila_copia,saiu);
         }
-        printf("\nVez do usuário: ");
+        printf("\nVez do usuário:\n");
         while(!is_empty(sequencia)){
-            dequeue(sequencia,&saiu);
+            dequeue(sequencia,&esperado);
             scanf("%d",&entrada_usuario);
-            if(entrada_usuario==saiu){
+            if(entrada_usuario==esperado){
                 printf("OK\n");
             }else{
                 printf("ERROU!\n");
@@ -50,7 +50,7 @@ int main(){
             dequeue(fila_copia,&saiu);
             enqueue(fila,saiu);
         }
-        contador++;
+        rodada++;
     }
     
     destroy(fila_copia);
