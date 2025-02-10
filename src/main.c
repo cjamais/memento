@@ -2,7 +2,7 @@
 #include "../lib/addons.h"
 #include "../lib/jogo.h"
 #include "../lib/queue.h"
-#define MAX_RODADAS 50 //define o tamanho máximo de rodadas
+#define MAX_RODADAS 30 //define o tamanho máximo de rodadas
 
 int main() {
     //PREPARAÇÃO DO AMBIENTE
