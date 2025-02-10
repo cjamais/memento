@@ -35,14 +35,13 @@ O programa então libera a entrada do jogador. O jogador pode utilizar o mouse o
 Ao final de cada rodada, a fila auxiliar é desenfileirada e seus elementos são reinseridos na fila principal, restaurando a sequência para que o jogo continue de onde parou. O contador de rodadas é incrementado em um, e o processo se repete até o final do jogo, seja pela vitória do jogador, ao completar todas as rodadas sem erros, ou pela derrota, caso ele cometa algum erro.
 
 ### Troca de telas
-O jogo é divido entre camadas e seções de forma a exibir o conteúdo correspondente. Por exemplo, a logo da equipe só é exibida uma vez quando o jogo é inicializado, mas o menu pode ser acessado novamente quando o usuário erra a sequência da rodada. Foram utilizadas estruturas como `while` e `do-while`, além de algumas flags para garantir a "navegação".
+O jogo é dividido entre camadas e seções de forma a exibir o conteúdo correspondente. Por exemplo, a logo da equipe só é exibida uma vez quando o jogo é inicializado, mas o menu pode ser acessado novamente quando o usuário erra a sequência da rodada. Foram utilizadas estruturas como `while` e `do-while`, além de algumas flags para garantir a "navegação".
 ![image](https://github.com/user-attachments/assets/3e846d8c-cf57-4f9c-be9d-1bda23711224)
 
 ## ♟️Estratégia de implementação e metodologia
 Antes da implementação com o Allegro, rascunhamos e desenvolvemos separadamente a lógica base do jogo (pasta `logica_genius`), realizando testes para verificar se o TAD fila foi implementado da melhor maneira.
 
 ![image](https://github.com/user-attachments/assets/609020ac-9970-408e-8f55-e958b6e0eff9)
-
 
 A partir disso, dividimos as responsabilidades: cada um ficou encarregado de aprender e compartilhar conhecimentos sobre diferentes recursos da biblioteca, como eventos de clique e teclado, troca de telas, animação e saída de áudio. Essa divisão teve como objetivo aprofundar o conhecimento na biblioteca e torná-la mais familiar. Com as peças prontas, bastou encaixá-las. O processo demorou um pouco, mas reuniões para compartilhar e discutir a implementação de certos recursos ajudaram a resolver os desafios.
 
