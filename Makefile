@@ -4,13 +4,20 @@ NAME = Memento
 CC = gcc
 CFLAGS = -Wall -g
 
-## Verifica o sistema operacional
-ifeq ($(OS),Windows_NT)
+# Detecta o sistema operacional
+UNAME_S := $(shell uname -s)
+
+ifeq ($(OS),Windows_NT) # Windows
     EXE = $(NAME).exe
     RM = del /F /Q
     INCLUDES = -I allegro\include
     LDFLAGS = -L allegro\lib -lallegro_monolith
-else
+else ifeq ($(UNAME_S), Darwin)  # macOS
+    EXE = $(NAME)
+    RM = rm -f
+    INCLUDES = -I/usr/local/opt/allegro/include
+    LDFLAGS = -L/usr/local/opt/allegro/lib -lallegro -lallegro_image -lallegro_font -lallegro_ttf -lallegro_primitives -lallegro_audio -lallegro_acodec -lallegro_main
+else  # Linux
     EXE = $(NAME)
     RM = rm -f
     INCLUDES = -I/usr/include/allegro5
