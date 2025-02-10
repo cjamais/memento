@@ -89,7 +89,7 @@ Ao clonar o repositório, um arquivo executável (Memento.exe) será baixado. Vo
 2. Clone este repositório:
    ```bash
    https://github.com/cjamais/memento.git
-3. Acesse o terminal, digite `make`, aperte enter e espere o jogo carregar.
+3. Acesse o terminal, digite `make run`, aperte enter e espere o jogo carregar.
 
 ##  📚 Sobre o Allegro 5
 O Allegro 5 é uma biblioteca gráfica poderosa para desenvolvimento de jogos em C/C++. Suporta gráficos, áudio, entrada de usuário e manipulação de eventos, tornando o desenvolvimento mais simples e eficiente.
