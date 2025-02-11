@@ -1,6 +1,8 @@
 # 🎮 Memento - Jogo da memória com Allegro 5
 O seguinte projeto implementa o clássico jogo Genius/Simon utilizando a biblioteca Allegro 5 e conceitos aprendidos na disciplina de Estrutura de Dados. O jogo desafia o jogador a memorizar e repetir sequências de cores e sons, aumentando a dificuldade conforme o progresso.
 
+Assista o vídeo no <a href="https://youtu.be/zmrpd9r-1Vw?si=CnUpuZlumaJ7TPWx">YouTube</a>. Se quiser ver apenas a execução do jogo, avance para 17:35.
+
 ## 🛠️ Tecnologias e ferramentas
 
 - Estrutura de dados: Fila (Queue) 🛒➡️
