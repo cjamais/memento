@@ -84,7 +84,7 @@ Ao clonar o repositório, um arquivo executável (Memento.exe) será baixado. Vo
 
 Para rodar o **Memento** no Linux, siga os passos abaixo:
 
-### **Instalando dependências**
+#### **Instalando dependências**
 Antes de tudo, certifique-se de ter o **GCC**, **Make** e as bibliotecas do **Allegro 5** instaladas. Você pode fazer isso rodando o seguinte comando no terminal:
 
 ```bash
@@ -97,7 +97,7 @@ Caso esteja usando outra distribuição baseada em **Arch Linux**, como **Manjar
 sudo pacman -S allegro
 ```
 
-### **Baixando o projeto**
+#### **Baixando o projeto**
 Agora, clone o repositório com:
 
 ```bash
@@ -110,7 +110,7 @@ Depois, entre na pasta do projeto:
 cd memento
 ```
 ---
-### **Compilando e executando o jogo**
+#### **Compilando e executando o jogo**
 Para compilar e executar o jogo, utilize um dos seguintes comandos dentro da pasta do projeto:
 
 - **Compilar e rodar automaticamente:**  
