@@ -38,6 +38,7 @@ Ao final de cada rodada, a fila auxiliar é desenfileirada e seus elementos são
 
 ### Troca de telas
 O jogo é dividido entre camadas e seções de forma a exibir o conteúdo correspondente. Por exemplo, a logo da equipe só é exibida uma vez quando o jogo é inicializado, mas o menu pode ser acessado novamente quando o usuário erra a sequência da rodada. Foram utilizadas estruturas como `while` e `do-while`, além de algumas flags para garantir a "navegação".
+
 ![image](https://github.com/user-attachments/assets/3e846d8c-cf57-4f9c-be9d-1bda23711224)
 
 ## ♟️Estratégia de implementação e metodologia
