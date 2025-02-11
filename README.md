@@ -79,13 +79,59 @@ Ao invés de utilizar o make no terminal, digite
 #### Outra alternativa
 Ao clonar o repositório, um arquivo executável (Memento.exe) será baixado. Você pode jogar através dessa última versão compilada. 
 
-### Linux 🐧
-1. Certifique-se de ter o **gcc** e o **Make** instalados
-2. Clone este repositório:
-   
-   ```bash
-   https://github.com/cjamais/memento.git
-4. Acesse o terminal, digite `make run`, aperte enter e espere o jogo carregar.
+
+### Linux 🐧 – Configuração e Execução do Memento
+
+Para rodar o **Memento** no Linux, siga os passos abaixo:
+
+### ** Instalando dependências**
+Antes de tudo, certifique-se de ter o **GCC**, **Make** e as bibliotecas do **Allegro 5** instaladas. Você pode fazer isso rodando o seguinte comando no terminal:
+
+```bash
+sudo apt update && sudo apt install gcc make liballegro5-dev
+```
+Isso instalará o compilador **GCC**, o gerenciador **Make** e todas as bibliotecas essenciais do **Allegro 5** para o jogo funcionar corretamente.
+
+Caso esteja usando outra distribuição baseada em **Arch Linux**, como **Manjaro**, utilize:
+```bash
+sudo pacman -S allegro
+```
+
+### **Baixando o projeto**
+Agora, clone o repositório com:
+
+```bash
+git clone https://github.com/cjamais/memento.git
+```
+
+Depois, entre na pasta do projeto:
+
+```bash
+cd memento
+```
+---
+### **Compilando e executando o jogo**
+Para compilar e executar o jogo, utilize um dos seguintes comandos dentro da pasta do projeto:
+
+- **Compilar e rodar automaticamente:**  
+  ```bash
+  make run
+  ```  
+
+- **Compilar o executável e rodar manualmente:**  
+  ```bash
+  make
+  ./Memento
+  ```  
+
+Caso precise limpar os arquivos compilados e recompilar do zero, use:
+
+```bash
+make clean
+make run
+```
+
+Com isso, o jogo **Memento** estará pronto para rodar no seu sistema Linux! 🚀
 
 ### macOS 🍎
 1. Certifique-se de ter o **gcc** e o **Make** instalados
