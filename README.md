@@ -84,7 +84,7 @@ Ao clonar o repositório, um arquivo executável (Memento.exe) será baixado. Vo
 
 Para rodar o **Memento** no Linux, siga os passos abaixo:
 
-### ** Instalando dependências**
+### **Instalando dependências**
 Antes de tudo, certifique-se de ter o **GCC**, **Make** e as bibliotecas do **Allegro 5** instaladas. Você pode fazer isso rodando o seguinte comando no terminal:
 
 ```bash
